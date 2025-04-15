@@ -1,0 +1,36 @@
+table Calendar
+	lineageTag: d2eccc43-5e79-4f4a-b9b2-e281444e8420
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4c1a9526-a45f-494b-8cc8-8c8f76392028
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: 1969fd52-9950-446a-b66e-fd41ecf367a4
+			defaultHierarchy: LocalDateTable_7f42cfc1-ac99-49f0-b286-294e78546b9e.'Date Hierarchy'
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition Calendar = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\aman.k\Desktop\Calendar.xlsx"), null, true),
+				    Sheet1_Sheet = Source{[Item="Sheet1",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Sheet1_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Date", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

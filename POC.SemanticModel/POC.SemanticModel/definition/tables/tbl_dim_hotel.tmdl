@@ -1,0 +1,134 @@
+table tbl_dim_hotel
+	lineageTag: 3fc40c53-dfbe-417d-ad19-c9f0cc4f8378
+
+	column pk_dim_hotel
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 003d301e-43be-46d9-a8a4-5775a24b8305
+		summarizeBy: none
+		sourceColumn: pk_dim_hotel
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel_code
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 0f541335-c14f-4e20-a3cb-b2eab0ea0404
+		summarizeBy: none
+		sourceColumn: hotel_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel_name
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 026242df-dad5-4869-ad5b-749cdd88e004
+		summarizeBy: none
+		sourceColumn: hotel_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column hotel_country
+		dataType: string
+		sourceProviderType: varchar(40)
+		lineageTag: 69ee87cb-165e-415a-b3ad-46de7b4efc6f
+		summarizeBy: none
+		sourceColumn: hotel_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_country
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 89ed108f-6b31-4278-884b-218292f84d3c
+		summarizeBy: none
+		sourceColumn: fk_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_create_dttm
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 08154b44-944f-40fe-9e13-96b1af557723
+		summarizeBy: none
+		sourceColumn: dwh_create_dttm
+
+		variation Variation
+			isDefault
+			relationship: ff440193-1522-4ea2-80fa-6a4648d7b9d2
+			defaultHierarchy: LocalDateTable_aaf45799-1360-47ca-b923-45aca357585e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_modif_dttm
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 16625630-6813-47ed-8b07-4ecc690918c4
+		summarizeBy: none
+		sourceColumn: dwh_modif_dttm
+
+		variation Variation
+			isDefault
+			relationship: 1d5c0c19-357a-4a8a-882d-2e10f930df2d
+			defaultHierarchy: LocalDateTable_d9de938c-1ef5-459c-b97a-10067c23b090.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_code
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 9513a883-f65e-40a6-bc9e-9a51a2341c1e
+		summarizeBy: none
+		sourceColumn: city_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_source
+		dataType: string
+		sourceProviderType: varchar(4)
+		lineageTag: 8aa9f244-d259-477e-9e24-5d1d50345377
+		summarizeBy: none
+		sourceColumn: data_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column city_name
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: b5af1db7-d1a7-4854-8961-c15450348286
+		summarizeBy: none
+		sourceColumn: city_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_dim_hotel
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 194e1766-361c-4205-80a8-e1abd9258bc1
+		summarizeBy: sum
+		sourceColumn: fk_dim_hotel
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_hotel = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("misdev.database.windows.net", "Analytics_demo_DWH"),
+				    data_tbl_dim_hotel = Source{[Schema="data",Item="tbl_dim_hotel"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(data_tbl_dim_hotel,{"address_1", "address_2", "address_3", "address_4", "chain_name", "fail", "fax", "Latitude", "Longitude", "phone", "url", "postalcode", "Hotel_Group_Code", "Hotel_Group_Name", "hotel_source_code", "tti_chain_code", "tti_hotel_code"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

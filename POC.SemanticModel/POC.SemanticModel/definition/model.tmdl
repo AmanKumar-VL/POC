@@ -1,0 +1,37 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["tbl_fact_transaction_info","tbl_dim_country","tbl_dim_hotel","tbl_dim_product_hierarchy","tbl_dim_supplier","Calendar"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBIDesktopVersion = 2.141.1253.0 (25.03)+74f9999a1e95f78c739f3ea2b96ba340e9ba8729
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table tbl_fact_transaction_info
+ref table tbl_dim_country
+ref table tbl_dim_hotel
+ref table tbl_dim_product_hierarchy
+ref table tbl_dim_supplier
+ref table DateTableTemplate_399c501c-97a2-4d4d-a1e3-13a137be7ced
+ref table LocalDateTable_c904106e-8505-4c0d-b47a-2e40eb76f827
+ref table LocalDateTable_3d197e2d-605c-4dde-817f-35e3a0a588bd
+ref table LocalDateTable_c4e8c95e-153d-4b02-ba95-24bfbdcd4701
+ref table LocalDateTable_7c616e0a-f5bb-4c3b-b6ff-297b7c74bc01
+ref table LocalDateTable_aaf45799-1360-47ca-b923-45aca357585e
+ref table LocalDateTable_d9de938c-1ef5-459c-b97a-10067c23b090
+ref table LocalDateTable_f9362edf-93be-4c9c-a8a8-242fa39977e2
+ref table LocalDateTable_672517cd-94aa-4e2f-8a38-d2530c38464a
+ref table LocalDateTable_e5d9e52c-29e1-4b52-857b-a87aa593ec42
+ref table LocalDateTable_ae320afe-0c36-4ef1-9343-ff20539ef59b
+ref table Calendar
+ref table LocalDateTable_7f42cfc1-ac99-49f0-b286-294e78546b9e
+
+ref cultureInfo en-US
+

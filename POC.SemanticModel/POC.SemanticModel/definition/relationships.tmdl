@@ -1,0 +1,77 @@
+relationship ce4322fc-b2ce-4d30-91e5-d1f75c37ac19
+	fromColumn: tbl_dim_hotel.fk_country
+	toColumn: tbl_dim_country.pk_dim_country
+
+	annotation PBI_IsFromSource = FS
+
+relationship e8a43a34-59bb-4e92-8a1c-e521963fed45
+	fromColumn: tbl_fact_transaction_info.fk_dim_hotel
+	toColumn: tbl_dim_hotel.pk_dim_hotel
+
+relationship 08efbbc7-a335-4e34-89de-4fc17c46ffa0
+	fromColumn: tbl_fact_transaction_info.fk_dim_product_hierarchy
+	toColumn: tbl_dim_product_hierarchy.pk_dim_product_hierarchy
+
+relationship a2cd2bf0-6f40-494a-bc49-dda4fd78194f
+	fromColumn: tbl_fact_transaction_info.fk_dim_supplier
+	toColumn: tbl_dim_supplier.pk_dim_supplier
+
+relationship 653b4f6b-c015-46fd-8b44-2cc96e15287a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_fact_transaction_info.dwh_create_dttm
+	toColumn: LocalDateTable_c904106e-8505-4c0d-b47a-2e40eb76f827.Date
+
+relationship 7ac7a939-6d1e-47e5-979f-e409accd6663
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_fact_transaction_info.dwh_modif_dttm
+	toColumn: LocalDateTable_3d197e2d-605c-4dde-817f-35e3a0a588bd.Date
+
+relationship 96eee112-d38e-4f66-8bad-7a1820703ac0
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_country.dwh_modif_dttm
+	toColumn: LocalDateTable_c4e8c95e-153d-4b02-ba95-24bfbdcd4701.Date
+
+relationship 1422d429-7a4e-4415-bb07-b0f0632f3c72
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_country.dwh_create_dttm
+	toColumn: LocalDateTable_7c616e0a-f5bb-4c3b-b6ff-297b7c74bc01.Date
+
+relationship ff440193-1522-4ea2-80fa-6a4648d7b9d2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_hotel.dwh_create_dttm
+	toColumn: LocalDateTable_aaf45799-1360-47ca-b923-45aca357585e.Date
+
+relationship 1d5c0c19-357a-4a8a-882d-2e10f930df2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_hotel.dwh_modif_dttm
+	toColumn: LocalDateTable_d9de938c-1ef5-459c-b97a-10067c23b090.Date
+
+relationship 22f9a812-f748-4e40-87b8-670bed3e8e2a
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_product_hierarchy.dwh_modif_dttm
+	toColumn: LocalDateTable_f9362edf-93be-4c9c-a8a8-242fa39977e2.Date
+
+relationship 685ab8fc-bdfb-482a-97a8-767009ba2c2e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_product_hierarchy.dwh_create_dttm
+	toColumn: LocalDateTable_672517cd-94aa-4e2f-8a38-d2530c38464a.Date
+
+relationship 4454a163-e262-4e5a-bb57-634915eb617c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_supplier.dwh_create_dttm
+	toColumn: LocalDateTable_e5d9e52c-29e1-4b52-857b-a87aa593ec42.Date
+
+relationship c8dfccda-0c35-4392-b5c0-5414bf44e689
+	joinOnDateBehavior: datePartOnly
+	fromColumn: tbl_dim_supplier.dwh_modif_dttm
+	toColumn: LocalDateTable_ae320afe-0c36-4ef1-9343-ff20539ef59b.Date
+
+relationship d6a98dcb-0c9f-b752-6323-e7a4947b4232
+	fromColumn: tbl_fact_transaction_info.invoice_Date
+	toColumn: Calendar.Date
+
+relationship 1969fd52-9950-446a-b66e-fd41ecf367a4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Calendar.Date
+	toColumn: LocalDateTable_7f42cfc1-ac99-49f0-b286-294e78546b9e.Date
+

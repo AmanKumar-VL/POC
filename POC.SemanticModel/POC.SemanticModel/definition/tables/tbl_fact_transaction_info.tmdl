@@ -1,0 +1,657 @@
+table tbl_fact_transaction_info
+	lineageTag: cf3b0805-4135-4d11-a328-d99f2907db89
+
+	column pk_fact_invoice_detail
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: fa5a640f-9fdc-4e29-8566-1e499a60f078
+		summarizeBy: sum
+		sourceColumn: pk_fact_invoice_detail
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_fact_invoice
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 5197582d-066d-4bce-81ed-5294f175832c
+		summarizeBy: sum
+		sourceColumn: fk_fact_invoice
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_detail_serial
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 2eccb985-18b4-43d5-a055-55f7bb81b8d3
+		summarizeBy: none
+		sourceColumn: invoice_detail_serial
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_dim_supplier
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 68007bcb-95d6-4403-81b6-310e86c118d2
+		summarizeBy: none
+		sourceColumn: fk_dim_supplier
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_dim_passenger
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 74ae0629-1b8b-4cbc-b998-0134e0be805b
+		summarizeBy: sum
+		sourceColumn: fk_dim_passenger
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_dim_product_hierarchy
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 01fb904a-4b12-45ea-9ae1-1052204edbfa
+		summarizeBy: none
+		sourceColumn: fk_dim_product_hierarchy
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_dim_hotel
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 975c1f9d-1d29-439e-91f8-d109dd952d05
+		summarizeBy: none
+		sourceColumn: fk_dim_hotel
+
+		annotation SummarizationSetBy = Automatic
+
+	column inv_gross_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: b89eba6f-d223-4183-8a51-500533635dc2
+		summarizeBy: sum
+		sourceColumn: inv_gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column base_gross_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 092bada6-0dc6-43c7-97fd-9ceaa5543ef9
+		summarizeBy: sum
+		sourceColumn: base_gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_net_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 7733e3cb-30e5-4bba-8598-0fab695c2fc7
+		summarizeBy: sum
+		sourceColumn: inv_net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_vat
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: b37fbd62-1aee-45db-9e3c-60855c8170b5
+		summarizeBy: sum
+		sourceColumn: inv_vat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_fare_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 8b75b0a6-ca8c-41ae-84d4-2c9ce4c07ac1
+		summarizeBy: sum
+		sourceColumn: inv_fare_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column base_fare_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: e8b8d881-14d2-4d98-a508-2ebc64485b07
+		summarizeBy: sum
+		sourceColumn: base_fare_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_tax_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 3965c8b9-2de1-47fb-8e9f-e3da0a6856c2
+		summarizeBy: sum
+		sourceColumn: inv_tax_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_fee_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 94013c39-fe8b-4281-a1d6-e86f944d606e
+		summarizeBy: sum
+		sourceColumn: inv_fee_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_hidden_fee_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: db610421-138f-4f51-b373-b40eaba9b490
+		summarizeBy: sum
+		sourceColumn: inv_hidden_fee_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_lowest_fare
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: f399fb83-b26d-444e-86f0-5e25ed1f7e69
+		summarizeBy: sum
+		sourceColumn: inv_lowest_fare
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_savings
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 4aa8aacf-9689-4496-807e-ca0fc056af0b
+		summarizeBy: sum
+		sourceColumn: inv_savings
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_lost_savings
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 537598d3-cfba-46d9-a4be-c708a7cee5ba
+		summarizeBy: sum
+		sourceColumn: inv_lost_savings
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column base_lost_savings
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 2c311aaa-1d0b-4ff9-8269-51ef66165949
+		summarizeBy: sum
+		sourceColumn: base_lost_savings
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_paid_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 87f72d8b-be04-456f-9599-353b3bfd4ffa
+		summarizeBy: sum
+		sourceColumn: inv_paid_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_carbon_cost
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 45d3c6a3-0e12-4ae3-a312-6f88573eebe0
+		summarizeBy: sum
+		sourceColumn: inv_carbon_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column base_carbon_cost
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 6338aa25-b2c8-45de-a31d-ec41504be94c
+		summarizeBy: sum
+		sourceColumn: base_carbon_cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column advanced_purchase_days
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: b45f530b-501a-4c4a-892c-54d6ca20d5df
+		summarizeBy: sum
+		sourceColumn: advanced_purchase_days
+
+		annotation SummarizationSetBy = Automatic
+
+	column ticket_number
+		dataType: string
+		sourceProviderType: varchar(60)
+		lineageTag: 658a1610-6bf5-434a-bc9d-16c5ebed3599
+		summarizeBy: none
+		sourceColumn: ticket_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column class
+		dataType: string
+		sourceProviderType: varchar(40)
+		lineageTag: 4763e457-402e-4a87-944c-7f866857b83d
+		summarizeBy: none
+		sourceColumn: class
+
+		annotation SummarizationSetBy = Automatic
+
+	column number_of_air_miles
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: efa06880-3da2-4605-b825-e5040e9c72b4
+		summarizeBy: sum
+		sourceColumn: number_of_air_miles
+
+		annotation SummarizationSetBy = Automatic
+
+	column number_of_passengers
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 0d5c314c-1d76-4083-bf13-a6a997cfebf0
+		summarizeBy: sum
+		sourceColumn: number_of_passengers
+
+		annotation SummarizationSetBy = Automatic
+
+	column number_of_transactions
+		dataType: int64
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 2d83ba23-e704-4e66-b7cd-2a9713840b94
+		summarizeBy: sum
+		sourceColumn: number_of_transactions
+
+		annotation SummarizationSetBy = Automatic
+
+	column number_of_nights
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 271373d7-95a3-48d4-903b-97c2eea9e603
+		summarizeBy: sum
+		sourceColumn: number_of_nights
+
+		annotation SummarizationSetBy = Automatic
+
+	column carbon_kgs
+		dataType: double
+		sourceProviderType: real
+		lineageTag: db75e04f-6f43-4a70-9f7f-44c3fad0fba5
+		summarizeBy: sum
+		sourceColumn: carbon_kgs
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column car_vendor_code
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: d8764285-fa44-4a92-abfd-6885d5777af8
+		summarizeBy: none
+		sourceColumn: car_vendor_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column car_type
+		dataType: string
+		sourceProviderType: varchar(100)
+		lineageTag: 382d550d-0d30-4b84-9098-b93b29deb0af
+		summarizeBy: none
+		sourceColumn: car_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_create_dttm
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: b2ba3959-d687-43a6-bc7e-15d2711aaa8c
+		summarizeBy: none
+		sourceColumn: dwh_create_dttm
+
+		variation Variation
+			isDefault
+			relationship: 653b4f6b-c015-46fd-8b44-2cc96e15287a
+			defaultHierarchy: LocalDateTable_c904106e-8505-4c0d-b47a-2e40eb76f827.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_modif_dttm
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: a290aec9-6607-4395-9a0e-0825a4624b50
+		summarizeBy: none
+		sourceColumn: dwh_modif_dttm
+
+		variation Variation
+			isDefault
+			relationship: 7ac7a939-6d1e-47e5-979f-e409accd6663
+			defaultHierarchy: LocalDateTable_3d197e2d-605c-4dde-817f-35e3a0a588bd.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column carrier_code_per_segment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: c56593b1-14aa-4712-86d3-19ae0ad870b4
+		summarizeBy: none
+		sourceColumn: carrier_code_per_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column class_code_per_segment
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: e4e0539b-c38f-430d-972b-dce176f052bb
+		summarizeBy: none
+		sourceColumn: class_code_per_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column flight_number_per_segment
+		dataType: string
+		sourceProviderType: varchar(400)
+		lineageTag: 9c534403-47ea-4c70-aae4-5ad5e6e56cc2
+		summarizeBy: none
+		sourceColumn: flight_number_per_segment
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_source
+		dataType: string
+		sourceProviderType: varchar(5)
+		lineageTag: c5fce61a-fcec-47df-9c43-584cd5b2022d
+		summarizeBy: none
+		sourceColumn: data_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column route_code
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 9be2f64e-c27c-4f49-bdb7-3d875f2b7eeb
+		summarizeBy: none
+		sourceColumn: route_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column fk_dim_account_hierarchy
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 2b50a22a-01a1-4b7b-bc2c-e67bf8e3f99f
+		summarizeBy: sum
+		sourceColumn: fk_dim_account_hierarchy
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_Date
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 6ec9fe33-088c-4b8e-b4a9-7d38e0848abb
+		summarizeBy: none
+		sourceColumn: invoice_Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column fk_dim_branch_hierarchy
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 336823cc-b688-40f2-95ce-8f775109349e
+		summarizeBy: sum
+		sourceColumn: fk_dim_branch_hierarchy
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_number
+		dataType: string
+		sourceProviderType: varchar(50)
+		lineageTag: 89e285d6-e820-488f-b28e-9893fa2c26e7
+		summarizeBy: none
+		sourceColumn: invoice_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Detail_Transaction_Type
+		dataType: string
+		sourceProviderType: varchar(8)
+		lineageTag: 57ffb39f-f8a4-4a09-a575-9dbcf40fae85
+		summarizeBy: none
+		sourceColumn: Detail_Transaction_Type
+
+		annotation SummarizationSetBy = Automatic
+
+	column air_rail_segment_count
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 3a52e300-9766-401d-8f4f-8a2190a45372
+		summarizeBy: sum
+		sourceColumn: air_rail_segment_count
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_ticket_number
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 9a1cd377-0690-494d-9443-18276fe551e6
+		summarizeBy: none
+		sourceColumn: original_ticket_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column inv_merged_fee_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: dae03a12-4cf2-4d21-904a-d2c16defa2b5
+		summarizeBy: sum
+		sourceColumn: inv_merged_fee_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_merged_vat
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: f7bdced4-0ca3-4422-bf69-223c9fc82702
+		summarizeBy: sum
+		sourceColumn: inv_merged_vat
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column fk_dim_payment_type
+		dataType: int64
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: ccdab665-64e0-41ca-8a5e-212c07dee4fc
+		summarizeBy: sum
+		sourceColumn: fk_dim_payment_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column inv_merged_gross_amount
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 332a19c0-3f4c-478d-8aae-770f45433731
+		summarizeBy: sum
+		sourceColumn: inv_merged_gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column inv_lowest_fare_as_entered
+		dataType: decimal
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		sourceProviderType: money
+		lineageTag: 0cb96d8b-e562-416a-a47b-13b630ad7ed7
+		summarizeBy: sum
+		sourceColumn: inv_lowest_fare_as_entered
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	column airline_code
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: ab96642e-99ae-43a7-bb1f-e83ceaa0fb91
+		summarizeBy: none
+		sourceColumn: airline_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_class
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: 48fb5ad9-762f-45a1-8f87-6d7d7811e226
+		summarizeBy: none
+		sourceColumn: booking_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column original_invoice_number
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: a1cfdaa8-b99d-4a8a-9906-50d4c32963a5
+		summarizeBy: none
+		sourceColumn: original_invoice_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column booking_id
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: b3f91cc2-0e2c-4bfa-a885-b815d3a95c17
+		summarizeBy: none
+		sourceColumn: booking_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column void_indicator
+		dataType: string
+		sourceProviderType: varchar(20)
+		lineageTag: 9c95a061-af87-400a-b899-d2331b576853
+		summarizeBy: none
+		sourceColumn: void_indicator
+
+		annotation SummarizationSetBy = Automatic
+
+	column trip_type
+		dataType: string
+		sourceProviderType: nvarchar(50)
+		lineageTag: 64e7bfed-1bb7-488d-9c6e-432372d3d25f
+		summarizeBy: none
+		sourceColumn: trip_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column DOM_INTL
+		dataType: string
+		sourceProviderType: nvarchar(20)
+		lineageTag: 051aaa16-cf91-4e68-bc7c-26523d56bc67
+		summarizeBy: none
+		sourceColumn: DOM_INTL
+
+		annotation SummarizationSetBy = Automatic
+
+	column Online_offline_Assistance
+		dataType: string
+		sourceProviderType: nvarchar(50)
+		lineageTag: e233f10b-cdd8-48ea-a28e-819526f4f488
+		summarizeBy: none
+		sourceColumn: Online_offline_Assistance
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_fact_transaction_info = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("misdev.database.windows.net", "Analytics_demo_DWH"),
+				    dbo_tbl_fact_invoice_detail_2023 = Source{[Schema="dbo",Item="tbl_fact_invoice_detail_2023"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(dbo_tbl_fact_invoice_detail_2023,{"AGENT_ID", "Assoc_PNR", "Void_YN", "SFCARDNUM", "Opportunity_YN", "inv_tax1", "inv_tax2", "inv_tax3", "inv_tax4", "is_error_credit_note", "MCO", "Mode", "IATA_NBR", "insurance_type", "Haul_CO2", "Hotelattachment_YN", "fk_dim_reason_1", "fk_dim_staff_member_owner", "fk_dim_staff_member_booker", "fk_dim_staff_member_ticketer", "GDS_code", "GDS_id", "gds_record_locator", "delete_flag", "dt_branch", "credit_card_number", "credit_card_expiry_date", "credit_card_prefix", "crew", "fare_basis", "fare_type", "fee_link_serial_code", "base_tax1", "base_tax2", "base_tax3", "base_tax4", "base_published_fare", "base_commission", "base_hidden_fee_amount", "base_merged_vat", "base_merged_fee_amount", "base_merged_gross_amount", "base_paid_amount", "booking_tool", "carbon_kgs_seg", "base_tax_amount", "exchange_indicator", "fk_dim_location_hierarchy_destination", "fk_dim_location_hierarchy_origin", "fk_dim_cabin", "SAVING_CODE", "PSEUDO_CITY", "itinerary_1", "itinerary_2", "fk_dim_exclusion_reason", "base_lowest_fare", "base_fee_amount", "base_savings", "base_net_amount", "fk_dim_reason_2", "inv_commission", "inv_published_fare", "inv_published_fare_as_entered", "itinerary_3", "priority_within_invoice", "tour_code", "TICKET_TYPE", "total_time_in_air", "journey_type", "Flight_type", "online_offline", "car_rate_type", "fk_dim_calendar_arrive", "fk_dim_air_equipment", "fk_dim_calendar_booking", "fk_dim_calendar_depart", "fk_dim_calendar_return", "misc_item_desc", "original_invoice_amount", "merged_fee_vat", "Financial_transaction_count", "return_arrival_time", "recordkey", "ticket_number_13", "haul", "fk_dim_equipment_code", "departure_time", "fk_dim_carrier", "fk_dim_currency_invoice", "arrival_time", "base_vat"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

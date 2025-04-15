@@ -1,0 +1,114 @@
+table tbl_dim_product_hierarchy
+	lineageTag: 628bf84a-8e9e-4947-9b50-bc73000211a3
+
+	column pk_dim_product_hierarchy
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: int
+		lineageTag: 02a5b43f-ade1-4054-bc62-9107daf9f0a0
+		summarizeBy: none
+		sourceColumn: pk_dim_product_hierarchy
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_source_code
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: d1842c45-1d39-4f07-b118-ed69dd891fce
+		summarizeBy: none
+		sourceColumn: product_source_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_code
+		dataType: string
+		sourceProviderType: varchar(200)
+		lineageTag: ef3f4c6c-ba15-4d0e-8595-51f6fcd1019c
+		summarizeBy: none
+		sourceColumn: product_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_description
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: 569d1513-dff3-4c4b-9da7-b5b30a408d31
+		summarizeBy: none
+		sourceColumn: product_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_group
+		dataType: string
+		sourceProviderType: varchar(40)
+		lineageTag: e9964328-de48-46fa-82cf-b3e5f878d3a7
+		summarizeBy: none
+		sourceColumn: product_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_modif_dttm
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 18f32d86-e4e3-42d1-8d11-244f3bc4cdbc
+		summarizeBy: none
+		sourceColumn: dwh_modif_dttm
+
+		variation Variation
+			isDefault
+			relationship: 22f9a812-f748-4e40-87b8-670bed3e8e2a
+			defaultHierarchy: LocalDateTable_f9362edf-93be-4c9c-a8a8-242fa39977e2.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_create_dttm
+		dataType: dateTime
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 00565be9-9759-4968-b396-8ed7478a4215
+		summarizeBy: none
+		sourceColumn: dwh_create_dttm
+
+		variation Variation
+			isDefault
+			relationship: 685ab8fc-bdfb-482a-97a8-767009ba2c2e
+			defaultHierarchy: LocalDateTable_672517cd-94aa-4e2f-8a38-d2530c38464a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_source
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: b8d493fd-20a3-4ac9-8470-377620da15c3
+		summarizeBy: none
+		sourceColumn: data_source
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_display_description
+		dataType: string
+		sourceProviderType: varchar(256)
+		lineageTag: e9a4b508-6fa6-4165-80c5-bd558e3ff4e3
+		summarizeBy: none
+		sourceColumn: product_display_description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_product_hierarchy = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("misdev.database.windows.net", "Analytics_demo_DWH"),
+				    data_tbl_dim_product_hierarchy = Source{[Schema="data",Item="tbl_dim_product_hierarchy"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(data_tbl_dim_product_hierarchy,{"fail", "fee_description", "fee_description_2", "fee_flag", "product_sub_group"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

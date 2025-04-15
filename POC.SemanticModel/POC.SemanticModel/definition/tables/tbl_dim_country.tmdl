@@ -1,0 +1,76 @@
+table tbl_dim_country
+	lineageTag: ec9feede-0ca1-4a27-8f1c-0a8a9709e0f7
+
+	column pk_dim_country
+		dataType: int64
+		isNullable: false
+		formatString: 0
+		sourceProviderType: smallint
+		lineageTag: 35d06a8b-4c19-4595-975c-65d11ec62506
+		summarizeBy: none
+		sourceColumn: pk_dim_country
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		sourceProviderType: varchar(40)
+		lineageTag: 2c0f959b-e95d-4bb4-ab8e-d05778c0e23d
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_modif_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 46d38fc4-5168-48b2-bf28-8b631b7292d5
+		summarizeBy: none
+		sourceColumn: dwh_modif_dttm
+
+		variation Variation
+			isDefault
+			relationship: 96eee112-d38e-4f66-8bad-7a1820703ac0
+			defaultHierarchy: LocalDateTable_c4e8c95e-153d-4b02-ba95-24bfbdcd4701.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column dwh_create_dttm
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime
+		lineageTag: 52a60181-fe37-4363-a56e-2e4ec9a79dd9
+		summarizeBy: none
+		sourceColumn: dwh_create_dttm
+
+		variation Variation
+			isDefault
+			relationship: 1422d429-7a4e-4415-bb07-b0f0632f3c72
+			defaultHierarchy: LocalDateTable_7c616e0a-f5bb-4c3b-b6ff-297b7c74bc01.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_source
+		dataType: string
+		sourceProviderType: varchar(10)
+		lineageTag: 91910ae2-b437-4439-8357-8bdec308ebca
+		summarizeBy: none
+		sourceColumn: data_source
+
+		annotation SummarizationSetBy = Automatic
+
+	partition tbl_dim_country = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("misdev.database.windows.net", "Analytics_demo_DWH"),
+				    data_tbl_dim_country = Source{[Schema="data",Item="tbl_dim_country"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(data_tbl_dim_country,{"continent_code", "continent_name", "fail", "country_source_code", "country_zone", "Country_long_code", "country_code"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+
